@@ -1,0 +1,7 @@
+.outer-container {
+    border: 1px solid black;
+}
+.inner-container {
+    border: 1px solid black;
+    display: flex;
+}
