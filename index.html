@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather app</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>Weather App</title>
 </head>
-<header>
-    <h1>Weather App</h1>
-</header>
+<body>
+    <!--display city name after search-->
+    <div id="header" class="jumbotron">
+        <h1>Weather Dashboard</h1>
+        
+    </div>
+    <!--main container for page-->
+    <div id="content" class="container">
+        <div class="row">
 
-<div class="outter-container">
-    <div class="row">
-        <!--suubbmit box start-->
-        <div class="col-lg-3">
-            <h2 class="mt-1">Search for a city:</h2>
-            <div class="input mb3">
-                <input type="text" id="city" class="form" placeholder="Submit">
-                <div class="input-append">
-                    <button class="btn btn-primary mb-3" type="button" id="search-button">
-
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!--end submit box-->
-        <div class="col-lg-9">
-            <!--current weather-->
-            <div class="row mr-0">
-                <div class="col-lg-11 card m-3 d-none" id="today-weather">
-                    <div class="card-body">
-                        <h3 id="city-name" class="city-name align-middle"></h3>
-                        <img id="current-pic" alt="">
-                        <p id="temperature"></p>
-                        <p id="humidity"></p>
-                        <p id="wind-speed"></p>
-                        <p id="UV-index"></p>
+            <!--left side search box and local storage-->
+            <div id="content-left" class="col-md-3">
+                <form>
+                    <label for="city-search">Search for a City:</label>
+                    <div class="form-row">
+                        <input type="text" id="city-search" class="form-control" name="city" placeholder="whats the weather like today ollie"></input>
+                        <button id="search-button" class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
                     </div>
-                </div>
+                </form>
+                <div id="search-error"></div>
+                <!--local storage list of cities-->
+                <ul id="search-history" class="list-group mt-4"></ul>
+                <!--delete history-->
+                <a href="/" id="delete-history"></a>
             </div>
 
-            <div class="row d-none" id="fiveday-header">
-                <div class="col-12">
-                    <h3>5-Day Forecast</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
+
+            <!--right side of page with results and 5 day-->
+            <div id="content-right" class="col-md-p pt-4">
+                <!--todays weather on top of right side-->
+                <div id="todays-weather" class="border rounded"></div>
+                <!--5 day-->
+                <div id="5-day" class="mt-5"></div>
             </div>
         </div>
     </div>
-</div>
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="./assets/js/script.js"></script>
-</div>
-</div>
-
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
-
 </html>

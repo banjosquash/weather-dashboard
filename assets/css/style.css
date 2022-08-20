@@ -1,0 +1,51 @@
+#header {
+    background-size: cover;
+    background-color: aquamarine;
+    text-align: center;
+}
+
+.jumbotron{
+    padding: none;
+}
+
+#city-search{
+    width: 100%;
+}
+
+i {
+    width: 240px;
+    display: inline-block;
+}
+
+#todays-weather{
+    padding-left: 15%;
+}
+
+#delete-history{
+    color: grey;
+
+}
+
+.weather-block{
+    width: 90px;
+    background-color: ivory;
+    text-align: center;
+}
+
+.uv-good{
+    background-color: green;
+    color: antiquewhite;
+    border-radius: 6px;
+}
+
+.uv-ok{
+    background-color: orangered;
+    border-radius: 6px;
+    color: antiquewhite;
+}
+
+.uv-bad{
+    background-color: red;
+    border-radius: 6px;
+    color: antiquewhite;
+}
