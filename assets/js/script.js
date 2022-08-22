@@ -19,7 +19,7 @@ var getCurrentWeather = (event) => {
     var city = $("#city-search").val();
     currentPlace = $("#city-search").val();
     //give the fetch url a var
-    var requestUrl =    "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + ApiKey;
+    var requestUrl ="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=standard" + "&APPID=" + ApiKey;
     fetch(requestUrl)
         .then(handleErrors)
         .then((response) => {
