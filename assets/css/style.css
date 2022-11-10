@@ -28,24 +28,7 @@ i {
 
 .weather-block{
     width: 90px;
-    background-color: ivory;
+    background-color: aquamarine;
     text-align: center;
 }
 
-.uv-good{
-    background-color: green;
-    color: antiquewhite;
-    border-radius: 6px;
-}
-
-.uv-ok{
-    background-color: orangered;
-    border-radius: 6px;
-    color: antiquewhite;
-}
-
-.uv-bad{
-    background-color: red;
-    border-radius: 6px;
-    color: antiquewhite;
-}
