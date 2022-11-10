@@ -14,12 +14,12 @@ var handleErrors = (response) => {
 
 
 
-var getCurrentWeather = (event) => {
+var getCurrentWeather = (event) => { 
     //accept city name from search box
     var city = $("#city-search").val();
     currentPlace = $("#city-search").val();
     //give the fetch url a var
-    var requestUrl ="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=standard" + "&APPID=" + ApiKey;
+    var requestUrl ="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + ApiKey;
     fetch(requestUrl)
         .then(handleErrors)
         .then((response) => {
@@ -57,7 +57,7 @@ var getCurrentWeather = (event) => {
             var longitude = response.coord.lon;
             var uvQueryUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&APPID=" + ApiKey;
             //uv index temp access url
-            uvQueryUrl = "https://cors-anywhere.herokuapp.com/" + uvQueryUrl;
+            // uvQueryUrl = "https://cors-anywhere.herokuapp.com/" + uvQueryUrl;
             //fetch uv data give color display
             fetch(uvQueryUrl)
             .then(handleErrors)
@@ -66,7 +66,7 @@ var getCurrentWeather = (event) => {
                 })
                 .then(function (response) {
                     var uvIndex = response.value;
-                    $("#uvIndex").html(`UV Inde: <span id="uvValue"></span>`);
+                    $("#uvIndex").html(`UV Index: <span id="uvValue"></span>`);
                     if (uvIndex = 0 && uvIndex < 3) {
                         $("#uvValue").attr("class", "uv-good");
 
@@ -84,7 +84,7 @@ var getCurrentWeather = (event) => {
 var showFiveDay = (event) => {
     var city = $("#city-search").val();
     //create var for forecast
-    var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=standard" + "&APPID=" + ApiKey;
+    var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial" + "&APPID=" + ApiKey;
     //fetch forcast
     fetch(queryUrl)
     .then(handleErrors)
@@ -167,19 +167,17 @@ var displayCities = () => {
             }
             // Set button class to active for currentPlace
             if (city === currentPlace) {
-                cityEl = `<button type="button" class="list-group-item list-group-item-action active">${city}</button></li>`;
+                cityEl = `<id="search-history" class="btn btn-primary" type="submit">${city}</button></li>`;
             } else {
-                cityEl = `<button type="button" class="list-group-item list-group-item-action">${city}</button></li>`;
+                cityEl = `<id="search-history" class="btn btn-primary" type="submit">${city}</button></li>`;
             } 
             // display city to page
-            $('#city-results').prepend(cityEl);
+            $('#search-history').append(cityEl);
         }
         // Add a "clear" button to page if there is a cities list
-        if (localStorage.length>0){
-            $('#delete-history').html($('<a id="clear-storage" href="#">clear</a>'));
-        } else {
-            $('#delete-history').html('');
-        }
+        if (localStorage.length > 0){
+            $('#delete-history').html($('<a id="delete-history" href="#">clear</a>'));
+        } 
     }
     
 }
@@ -187,20 +185,21 @@ var displayCities = () => {
 // New city search button event listener
 $('#search-button').on("click", (event) => {
     event.preventDefault();
-    currentPlace = $('#city-search').val();
+    currentPlace = $('#search-history').val();
     getCurrentWeather(event);
     });
     
     // Old searched cities buttons event listener
-    $('#city-results').on("click", (event) => {
+    $('#search-history-button').on("click", (event) => {
         event.preventDefault();
-        $('#city-search').val(event.target.textContent);
-        currentPlace=$('#city-search').val();
+        $('#search-history-button').val(event.target.textContent);
+        currentPlace=$('#search-history').val();
         getCurrentWeather(event);
     });
     
     // Clear old searched cities from localStorage event listener
-    $("#delete-history").on("click", (event) => {
+    document.getElementById("#delete-history").on("click", (event) => {
+        event.preventDefault();
         localStorage.clear();
         displayCities();
     });
